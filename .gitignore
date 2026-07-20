@@ -1,0 +1,13 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/
+
+# Netlify
+.netlify/
+
+# Node (in case tooling is added later)
+node_modules/

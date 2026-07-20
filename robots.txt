@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://purposefullivingafter60.com/sitemap.xml
