@@ -357,3 +357,24 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12;letter
 /* Topic filter empty state */
 .filter-empty{text-align:center;color:var(--ink-soft);font-size:var(--text-md);padding:2rem 1rem 0;margin:0}
 .post-grid .post[hidden]{display:none !important}
+
+/* Free guides / worksheets */
+.guide-body .worksheet{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-md);padding:1.15rem 1.25rem 1.25rem;margin:0 0 1.25rem}
+.guide-body .worksheet--highlight{background:var(--cream);border-color:var(--sage)}
+.guide-body .worksheet h3{margin:.1rem 0 .55rem;font-size:var(--text-lg)}
+.guide-body .worksheet__prompt{color:var(--ink-soft);font-size:var(--text-sm);margin:0 0 .75rem}
+.guide-body .worksheet__lines{border-bottom:1px solid var(--line);height:1.55rem;margin:0 0 .35rem}
+.guide-body .worksheet__checklist{margin:.4rem 0 0;padding-left:1.1rem}
+.guide-body .worksheet__checklist li{margin-bottom:.45rem}
+.guide-footer-cta{text-align:center;background:linear-gradient(135deg,var(--sage-deep),var(--sage));color:#fff;border-radius:var(--radius-lg);padding:1.75rem 1.25rem;margin:2.4rem 0 1rem}
+.guide-footer-cta h3{color:#fff;margin:0 0 .5rem}
+.guide-footer-cta p{color:rgba(255,255,255,.9);max-width:40ch;margin:0 auto 1.1rem}
+.guide-footer-cta .btn{margin:.25rem}
+.guide-footer-cta .btn--ghost{background:transparent;border:1px solid rgba(255,255,255,.55);color:#fff}
+.guide-footer-cta .btn--ghost:hover{background:rgba(255,255,255,.12)}
+@media print{
+  .header,.footer,.no-print,.menu-toggle,.mobile-nav{display:none !important}
+  .page-hero{padding:1rem 0 !important}
+  body{background:#fff}
+  .worksheet{break-inside:avoid}
+}
