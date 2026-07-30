@@ -353,3 +353,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12;letter
 
 /* Netlify honeypot spam field — visually hidden */
 .hidden-field{position:absolute!important;left:-9999px!important;height:0;overflow:hidden}
+
+/* Topic filter empty state */
+.filter-empty{text-align:center;color:var(--ink-soft);font-size:var(--text-md);padding:2rem 1rem 0;margin:0}
+.post-grid .post[hidden]{display:none !important}

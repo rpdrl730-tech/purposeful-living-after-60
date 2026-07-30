@@ -61,4 +61,51 @@
   // intercepting here would PREVENT Netlify from receiving the submission.
   // If you ever move off Netlify, wire these forms to your provider's
   // endpoint instead.
+
+
+  // ---- topic filter chips (Articles page) ----
+  (function () {
+    var chips = document.querySelectorAll('#topicChips [data-filter]');
+    var posts = document.querySelectorAll('.post-grid .post[data-category]');
+    var empty = document.getElementById('emptyFilter');
+    if (!chips.length || !posts.length) return;
+
+    var apply = function (topic) {
+      topic = (topic || 'all').toLowerCase();
+      if (topic !== 'all' && topic !== 'health' && topic !== 'retirement' && topic !== 'income') {
+        topic = 'all';
+      }
+      var visible = 0;
+      posts.forEach(function (post) {
+        var match = topic === 'all' || post.getAttribute('data-category') === topic;
+        post.hidden = !match;
+        if (match) visible += 1;
+      });
+      chips.forEach(function (chip) {
+        var active = chip.getAttribute('data-filter') === topic;
+        chip.classList.toggle('is-active', active);
+        chip.setAttribute('aria-selected', String(active));
+      });
+      if (empty) empty.hidden = visible > 0;
+
+      // Keep URL in sync without reloading
+      try {
+        var url = new URL(window.location.href);
+        if (topic === 'all') url.searchParams.delete('topic');
+        else url.searchParams.set('topic', topic);
+        window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+      } catch (e) { /* older browsers: ignore */ }
+    };
+
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function (e) {
+        e.preventDefault();
+        apply(chip.getAttribute('data-filter'));
+      });
+    });
+
+    var params = new URLSearchParams(window.location.search);
+    apply(params.get('topic') || 'all');
+  })();
+
 })();

@@ -61,11 +61,11 @@
     <p class="eyebrow reveal">The Journal</p>
     <h1 class="reveal">Practical guidance for a fuller second act.</h1>
     <p class="reveal">Honest, doable advice on staying strong, retiring with purpose, and building income online — written for this chapter of life, not the last one.</p>
-    <div class="chips reveal">
-      <a class="chip is-active" href="articles.html">All</a>
-      <a class="chip" href="articles.html">Health &amp; Vitality</a>
-      <a class="chip" href="articles.html">Retirement &amp; Purpose</a>
-      <a class="chip" href="articles.html">Digital Income</a>
+    <div class="chips reveal" id="topicChips" role="tablist" aria-label="Filter articles by topic">
+      <a class="chip is-active" href="articles.html" data-filter="all" role="tab" aria-selected="true">All</a>
+      <a class="chip" href="articles.html?topic=health" data-filter="health" role="tab" aria-selected="false">Health &amp; Vitality</a>
+      <a class="chip" href="articles.html?topic=retirement" data-filter="retirement" role="tab" aria-selected="false">Retirement &amp; Purpose</a>
+      <a class="chip" href="articles.html?topic=income" data-filter="income" role="tab" aria-selected="false">Digital Income</a>
     </div>
   </div>
 </section>
@@ -75,7 +75,7 @@
   <div class="wrap">
     <div class="post-grid">
 
-      <article class="post reveal">
+      <article class="post reveal" data-category="health">
         <a href="article-morning-routine.html" aria-label="Read: The 10-Minute Morning Routine That Keeps You Strong After 60">
           <img class="post__img" src="assets/topic-health.jpg" alt="A person doing gentle strength exercise at home in the morning" />
         </a>
@@ -87,7 +87,7 @@
         </div>
       </article>
 
-      <article class="post reveal">
+      <article class="post reveal" data-category="health">
         <a href="article-strength-after-60.html" aria-label="Read: Simple Strength Training After 60">
           <img class="post__img" src="assets/topic-health.jpg" alt="An older adult lifting a light dumbbell during a home strength session" />
         </a>
@@ -99,7 +99,7 @@
         </div>
       </article>
 
-      <article class="post reveal">
+      <article class="post reveal" data-category="retirement">
         <a href="article-5-questions-retire.html" aria-label="Read: 5 Questions to Answer Before You Retire">
           <img class="post__img" src="assets/topic-retirement.jpg" alt="A couple reviewing plans together on a porch at sunrise" />
         </a>
@@ -111,7 +111,7 @@
         </div>
       </article>
 
-      <article class="post reveal">
+      <article class="post reveal" data-category="retirement">
         <a href="article-purpose-in-retirement.html" aria-label="Read: Finding Purpose in Retirement">
           <img class="post__img" src="assets/topic-retirement.jpg" alt="Friends in their sixties enjoying a shared activity" />
         </a>
@@ -123,7 +123,7 @@
         </div>
       </article>
 
-      <article class="post reveal">
+      <article class="post reveal" data-category="income">
         <a href="article-online-income-skills.html" aria-label="Read: Turn a Lifetime of Skills Into an Online Side Income">
           <img class="post__img" src="assets/topic-income.jpg" alt="A person working at a cozy home desk with a laptop" />
         </a>
@@ -135,7 +135,7 @@
         </div>
       </article>
 
-      <article class="post reveal">
+      <article class="post reveal" data-category="income">
         <a href="article-sell-digital-products.html" aria-label="Read: How to Create and Sell a Simple Digital Product After 60">
           <img class="post__img" src="assets/topic-income.jpg" alt="A tablet showing a simple digital guide for sale" />
         </a>
@@ -148,6 +148,7 @@
       </article>
 
     </div>
+    <p class="filter-empty" id="emptyFilter" hidden>No articles in this topic yet. Check back soon, or browse all articles.</p>
   </div>
 </section>
 
@@ -189,9 +190,9 @@
       <nav class="footer__cols" aria-label="Footer">
         <div>
           <h4>Topics</h4>
-          <a href="articles.html">Health &amp; Vitality</a>
-          <a href="articles.html">Retirement &amp; Purpose</a>
-          <a href="articles.html">Digital Income</a>
+          <a href="articles.html?topic=health">Health &amp; Vitality</a>
+          <a href="articles.html?topic=retirement">Retirement &amp; Purpose</a>
+          <a href="articles.html?topic=income">Digital Income</a>
         </div>
         <div>
           <h4>Explore</h4>
