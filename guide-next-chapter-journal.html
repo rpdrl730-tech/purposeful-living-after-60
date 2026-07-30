@@ -65,6 +65,20 @@
 <article class="article">
   <div class="article__body guide-body">
 
+    <div class="worksheet worksheet--highlight no-print">
+      <h3>Your free Purposeful Living library</h3>
+      <p class="worksheet__prompt">Everything below is free to print and keep. Start anywhere.</p>
+      <ul class="worksheet__checklist">
+        <li><a href="guide-ready-to-retire-workbook.html">Ready-to-Retire Workbook</a></li>
+        <li><a href="guide-purpose-playbook.html">Purpose Playbook</a></li>
+        <li><a href="guide-strong-start.html">60+ Strong Start Guide</a> · <a href="guide-home-strength-kit.html">Home Strength Kit</a></li>
+        <li><a href="guide-skills-to-income-kit.html">Skills-to-Income Kit</a> · <a href="guide-digital-product-blueprint.html">Digital Product Blueprint</a></li>
+        <li><a href="guide-gear-and-tools.html">Gear &amp; tools buyer guide</a></li>
+      </ul>
+      <p class="worksheet__prompt">Join the weekly letter at the bottom of this page so new guides reach you as we publish them.</p>
+    </div>
+
+
     <p>There is no right way to use this journal. Skip what doesn't fit. Write a sentence or a page. Come back weeks later and add more. The point is not perfection — it is noticing what matters, so your days can start to match it. Pair this with our free <a href="guide-purpose-playbook.html">Purpose Playbook</a> when you are ready to turn reflection into action.</p>
 
     <div class="article__disclaimer">If writing about the past or future brings up lasting sadness, anxiety, or hopelessness, please talk with someone you trust or your doctor. This journal is a tool for reflection, not a substitute for care.</div>
@@ -203,11 +217,19 @@
 
     <blockquote>Meaning is built the same way a good life always was — one deliberate, ordinary choice at a time.</blockquote>
 
-    <div class="guide-footer-cta no-print">
-      <h3>Ready for exercises you can act on?</h3>
-      <p>Open the free Purpose Playbook — seven paths mapped onto simple worksheets and a 30-day experiment.</p>
-      <a class="btn btn--primary" href="guide-purpose-playbook.html">Get the playbook</a>
-      <a class="btn btn--ghost" href="article-purpose-in-retirement.html">Read the full article →</a>
+    
+    <div class="guide-footer-cta no-print" id="newsletter">
+      <h3>One thoughtful letter, every week</h3>
+      <p>Practical tips on health, retirement, and earning online — free, and easy to unsubscribe. A good companion while you work through these pages.</p>
+      <form class="cta__form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html" style="max-width:28rem;margin:0 auto 1rem">
+        <input type="hidden" name="form-name" value="newsletter" />
+        <p class="hidden-field"><label>Leave blank: <input name="bot-field" /></label></p>
+        <label class="sr-only" for="email">Email address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required style="margin-bottom:.6rem" />
+        <button type="submit" class="btn">Send it to me</button>
+      </form>
+      <p style="font-size:.85rem;opacity:.85;margin:0 0 1rem">We'll never share your email.</p>
+      <a class="btn btn--ghost" href="articles.html">Browse more articles →</a>
     </div>
 
   </div>
