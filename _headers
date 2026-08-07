@@ -1,0 +1,5 @@
+# Force journal PDF to download instead of trapping mobile users in fullscreen viewer
+/assets/next-chapter-journal.pdf
+  Content-Type: application/pdf
+  Content-Disposition: attachment; filename="Next-Chapter-Journal.pdf"
+  X-Content-Type-Options: nosniff
