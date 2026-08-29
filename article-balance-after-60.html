@@ -34,15 +34,6 @@
   "mainEntityOfPage": {"@type": "WebPage", "@id": "https://purposefullivingafter60.com/article-balance-after-60"}
 }
 </script>
-<!-- MailerLite Universal -->
-<script>
-(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-.push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-ml('account', '2527513');
-</script>
-<!-- End MailerLite Universal -->
 </head>
 <body>
 
@@ -227,8 +218,14 @@ ml('account', '2527513');
     <div class="cta reveal">
       <h2>One thoughtful letter, every week</h2>
       <p>Join readers getting practical tips on health, retirement, and earning online — plus a little encouragement for the week ahead. Free, and easy to unsubscribe.</p>
-      <div class="ml-embedded" data-form="ZaBBMG"></div>
-      <p class="cta__note">We'll never share your email. Unsubscribe anytime.</p>
+      <form class="cta__form" id="signupForm" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
+        <input type="hidden" name="form-name" value="newsletter" />
+        <p class="hidden-field"><label>Leave blank: <input name="bot-field" /></label></p>
+        <label class="sr-only" for="email">Email address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        <button type="submit" class="btn">Send it to me</button>
+      </form>
+      <p class="cta__note" id="signupNote">We'll never share your email. Unsubscribe anytime.</p>
     </div>
   </div>
 </section>
