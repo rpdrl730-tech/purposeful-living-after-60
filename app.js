@@ -108,4 +108,54 @@
     apply(params.get('topic') || 'all');
   })();
 
+
+  // ---- newsletter signup -> MailerLite (added 2026-09-01) ----
+  // The site's signup forms are Netlify Forms (data-netlify="true"), which
+  // strands addresses in the Netlify dashboard. This handler copies the
+  // address to MailerLite first (account 2527513, form 193750665026078507),
+  // then lets the form submit natively so Netlify still records it and the
+  // visitor still lands on /thanks.html. Nothing is lost either way.
+  (function () {
+    var ML_ENDPOINT = 'https://assets.mailerlite.com/jsonp/2527513/forms/193750665026078507/subscribe';
+
+    var isNewsletterForm = function (form) {
+      if (!form || form.tagName !== 'FORM') return false;
+      if (form.getAttribute('name') === 'newsletter') return true;
+      if (form.id === 'signupForm') return true;
+      return form.classList.contains('cta__form');
+    };
+
+    var sendToMailerLite = function (email) {
+      var body = new URLSearchParams();
+      body.append('fields[email]', email);
+      body.append('ml-submit', '1');
+      body.append('anticsrf', 'true');
+      var opts = { method: 'POST', body: body };
+      return fetch(ML_ENDPOINT, opts)['catch'](function () {
+        opts.mode = 'no-cors';
+        return fetch(ML_ENDPOINT, opts);
+      })['catch'](function () { return null; });
+    };
+
+    document.addEventListener('submit', function (ev) {
+      var form = ev.target;
+      if (!isNewsletterForm(form)) return;
+      var field = form.querySelector('input[type="email"], input[name="email"]');
+      if (!field || !field.value) return;
+      if (field.checkValidity && !field.checkValidity()) return;
+
+      ev.preventDefault();
+
+      var done = false;
+      var finish = function () {
+        if (done) return;
+        done = true;
+        form.submit();
+      };
+
+      setTimeout(finish, 2500);
+      sendToMailerLite(String(field.value).trim()).then(finish, finish);
+    }, true);
+  })();
+
 })();
