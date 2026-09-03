@@ -159,3 +159,55 @@
   })();
 
 })();
+
+/* --- beehiiv subscribe form (added 2026-09-03) ---------------------------
+   Replaces every on-site newsletter form with beehiiv's official embed so
+   signups land on the list the newsletter is actually sent from.
+   beehiiv's submit endpoint is bot-protected, so the embed is the only
+   supported route -- a direct POST from here returns 403. ------------------ */
+(function () {
+  var FORM_ID = 'c933fc80-6719-4a67-8868-686e0685904f';
+
+  function isNewsletterForm(el) {
+    if (!el || el.tagName !== 'FORM') return false;
+    return el.getAttribute('name') === 'newsletter' ||
+           el.id === 'signupForm' ||
+           (el.className && String(el.className).indexOf('cta__form') !== -1);
+  }
+
+  function mount(form) {
+    if (form.getAttribute('data-beehiiv-replaced')) return;
+    form.setAttribute('data-beehiiv-replaced', '1');
+
+    var holder = document.createElement('div');
+    holder.className = 'beehiiv-embed';
+    holder.style.width = '100%';
+    holder.style.maxWidth = '520px';
+    holder.style.margin = '0 auto';
+
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://subscribe-forms.beehiiv.com/v3/loader.js';
+    s.setAttribute('data-beehiiv-form', FORM_ID);
+    holder.appendChild(s);
+
+    form.parentNode.replaceChild(holder, form);
+
+    var note = holder.parentNode && holder.parentNode.querySelector('.cta__note');
+    if (note) note.style.marginTop = '.75rem';
+  }
+
+  function run() {
+    var forms = document.querySelectorAll('form');
+    for (var i = 0; i < forms.length; i++) {
+      if (isNewsletterForm(forms[i])) mount(forms[i]);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+})();
+
